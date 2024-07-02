@@ -94,8 +94,7 @@ private fun CallingAllFunction() {
             SubTitleTxt(
                 text = "8-) **Weight** determines, based on total weight, how much of the parent's " +
                         "dimensions should be occupied by each child. **Spacer** is used to " +
-                        "create horizontal or vertical " +
-                        "space between components."
+                        "create horizontal or vertical space between components."
             )
             WeightAndSpacerExample()
         }

@@ -5,7 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tutorial1_1Screen">
+      <SelectionState runConfigName="CallingAllFunction">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Screen">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
