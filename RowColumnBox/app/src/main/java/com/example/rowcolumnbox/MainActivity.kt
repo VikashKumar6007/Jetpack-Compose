@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.rowcolumnbox
 
 import android.content.res.Configuration
@@ -19,7 +21,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,11 +37,12 @@ import androidx.compose.ui.unit.sp
 
 //Implement All the Row Column Box Functionality of row, col, and box
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
         }
+
     }
 }
 
@@ -47,7 +53,6 @@ fun Screen() {
     CallingAllFunction()
 }
 
-@Preview(showBackground = true)
 @Composable
 private fun CallingAllFunction() {
 
@@ -104,34 +109,35 @@ private fun CallingAllFunction() {
 @Composable
 fun RowExample() {
 
-    TutorialText2(text = "Arrangement.Start")
+    Text(text = "Arrangement.Start")
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
         RowTexts()
     }
 
-    TutorialText2(text = "Arrangement.End")
+    Text(text = "Arrangement.End")
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
         RowTexts()
     }
 
-    TutorialText2(text = "Arrangement.Center")
+    Text(text = "Arrangement.Center")
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         RowTexts()
     }
 
-    TutorialText2(text = "Arrangement.SpaceEvenly")
-    Row(modifier = Modifier.fillMaxWidth()
-    , horizontalArrangement = Arrangement.SpaceEvenly,
-        ) {
+    Text(text = "Arrangement.SpaceEvenly")
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+    ) {
         RowTexts()
     }
 
-    TutorialText2(text = "Arrangement.SpaceAround")
+    Text(text = "Arrangement.SpaceAround")
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
         RowTexts()
     }
 
-    TutorialText2(text = "Arrangement.SpaceBetween")
+    Text(text = "Arrangement.SpaceBetween")
 
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         RowTexts()
@@ -146,32 +152,32 @@ fun ColumnExample() {
         .height(200.dp)
         .background(Color.LightGray)
 
-    TutorialText2(text = "Arrangement.Top")
+    Text(text = "Arrangement.Top")
     Column(modifier = modifier, verticalArrangement = Arrangement.Top) {
         ColumnTexts()
     }
 
-    TutorialText2(text = "Arrangement.Bottom")
+    Text(text = "Arrangement.Bottom")
     Column(modifier = modifier, verticalArrangement = Arrangement.Bottom) {
         ColumnTexts()
     }
 
-    TutorialText2(text = "Arrangement.Center")
+    Text(text = "Arrangement.Center")
     Column(modifier = modifier, verticalArrangement = Arrangement.Center) {
         ColumnTexts()
     }
 
-    TutorialText2(text = "Arrangement.SpaceEvenly")
+    Text(text = "Arrangement.SpaceEvenly")
     Column(modifier = modifier, verticalArrangement = Arrangement.SpaceEvenly) {
         ColumnTexts()
     }
 
-    TutorialText2(text = "Arrangement.SpaceAround")
+    Text(text = "Arrangement.SpaceAround")
     Column(modifier = modifier, verticalArrangement = Arrangement.SpaceAround) {
         ColumnTexts()
     }
 
-    TutorialText2(text = "Arrangement.SpaceBetween")
+    Text(text = "Arrangement.SpaceBetween")
     Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
         ColumnTexts()
     }
@@ -418,9 +424,11 @@ fun BoxShadowAndAlignmentExample() {
 
 @Composable
 fun WeightExample() {
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .background(Color.LightGray)) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.LightGray)
+    ) {
         Row {
             Text(
                 text = "Row1", modifier = Modifier
@@ -510,7 +518,7 @@ fun WeightAndSpacerExample() {
 }
 
 @Composable
-fun TutorialText2(text: String) {
+fun Text(text: String) {
     Text(text = text, fontSize = 16.sp, modifier = Modifier.padding(8.dp))
 }
 
@@ -523,6 +531,7 @@ fun SubTitleTxt(text: String) {
 fun Header(text: String) {
     Text(text = text, fontSize = 20.sp, modifier = Modifier.padding(8.dp))
 }
+
 @Preview(showBackground = true)
 @Preview("dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(device = Devices.PIXEL_C, showBackground = true)
