@@ -20,10 +20,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             FitnessAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android Buddy !!!",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+
+                    var navController = rememberNavController()
+
+                    NavHost(navController = navController, startDestination = Route.Register,
+                        builder = {
+
+                            composable(route = Route.Splash){
+                                Splash(navController)
+                            }
+                        })
                 }
             }
         }

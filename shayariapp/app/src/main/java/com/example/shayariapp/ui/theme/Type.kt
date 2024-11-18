@@ -1,12 +1,10 @@
-package com.example.fitnessapp.ui.theme
+package com.example.shayariapp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.fitnessapp.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -34,8 +32,3 @@ val Typography = Typography(
     )
     */
 )
-object AppFont {
-    val poppinsBold = FontFamily(Font(R.font.poppins_bold))
-    val poppinsRegular = FontFamily(Font(R.font.poppins_regular))
-
-}

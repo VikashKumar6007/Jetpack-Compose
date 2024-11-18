@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.fitnessapp"
+    namespace = "com.example.shayariapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.fitnessapp"
+        applicationId = "com.example.shayariapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -59,9 +59,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.transportation.consumer)
-    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
