@@ -1,6 +1,9 @@
 package com.example.shayariapp
 
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,18 +21,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.shayariapp.Routing.ShayariRoutingItem
 import com.example.shayariapp.ui.theme.primaryColor
 import com.example.shayariapp.ui.theme.purpleColor
 
 @Composable
-@Preview
-fun CategoryScreen() {
+fun CategoryScreen(navHostController: NavHostController) {
+    val context = LocalContext.current
+
+    // Handle the back button press explicitly
+    BackHandler {
+        (context as? Activity)?.finish() // Finish the activity on back press
+    }
+
     Surface() {
         Box(
             modifier = Modifier
@@ -42,18 +53,31 @@ fun CategoryScreen() {
 
 
                 LazyColumn() {
-                    items(getList()) {item->
+                    items(getList()) { item ->
 
                         Card(
                             shape = RoundedCornerShape(15.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(85.dp)
-                                .padding(start = 15.dp , end = 15.dp , top = 15.dp),
+                                .padding(start = 15.dp, end = 15.dp, top = 15.dp)
+                                .clickable {
+                                    navHostController.navigate(ShayariRoutingItem.shayariListScreen.route + "/${item.title.toString()}")
+                                },
                             colors = CardDefaults.cardColors(containerColor = purpleColor)
                         ) {
-                            Box (modifier = Modifier.fillMaxSize() , contentAlignment = Alignment.Center){
-                                Text(text = item.title.toString(), style = TextStyle(fontWeight = FontWeight.Bold , fontSize = 20.sp), color = Color.White)
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = item.title.toString(),
+                                    style = TextStyle(
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 20.sp
+                                    ),
+                                    color = Color.White
+                                )
 
                             }
                         }

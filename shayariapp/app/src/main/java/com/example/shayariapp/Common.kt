@@ -1,5 +1,6 @@
 package com.example.shayariapp
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -35,6 +37,7 @@ fun mainTol() {
 
 @Composable
 fun MainToolBar(title: String, onclick: () -> Unit) {
+    val context = LocalContext.current  // Get the current context
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,7 +47,12 @@ fun MainToolBar(title: String, onclick: () -> Unit) {
         Card(
             modifier = Modifier
                 .size(45.dp)
-                .clickable { onclick.invoke() },
+                .clickable { onclick.invoke()
+                    Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show()
+                    // Go back to the previous screen
+                    (context as? android.app.Activity)?.onBackPressed()
+
+                },
             colors = CardDefaults.cardColors(containerColor = purpleColor),
             shape = RoundedCornerShape(200.dp)
         ) {

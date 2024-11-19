@@ -66,4 +66,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1") // Replace with the latest version
 }

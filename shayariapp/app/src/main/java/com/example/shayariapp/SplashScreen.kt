@@ -1,5 +1,7 @@
 package com.example.shayariapp
 
+import android.os.Handler
+import android.os.Looper
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,12 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.example.shayariapp.Routing.ShayariRoutingItem
 import com.example.shayariapp.ui.theme.primaryColor
 import com.example.shayariapp.ui.theme.purpleColor
 
 @Composable
-@Preview
-fun SplashScreen() {
+fun SplashScreen(navHostController: NavHostController) {
     Surface() {
         Box(
             modifier = Modifier
@@ -36,10 +39,23 @@ fun SplashScreen() {
                     modifier = Modifier.size(100.dp)
                 )
             }
-            Box(modifier = Modifier.fillMaxSize().padding(20.dp) , contentAlignment = Alignment.BottomCenter)
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(20.dp),
+                contentAlignment = Alignment.BottomCenter
+            )
             {
-                CircularProgressIndicator(modifier = Modifier.size(35.dp) , strokeWidth = 4.dp , color = purpleColor)
+                CircularProgressIndicator(
+                    modifier = Modifier.size(35.dp),
+                    strokeWidth = 4.dp,
+                    color = purpleColor
+                )
+
             }
+            Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            navHostController.navigate(ShayariRoutingItem.categoryscreen.route)
+            }, 3000)
         }
     }
 }
